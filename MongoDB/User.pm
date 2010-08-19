@@ -58,10 +58,19 @@ sub for_session {
     my $self = shift;
     $self->_user->{_id}->to_string;
 }
+
 sub from_session {
     my $self = shift;
     my $id   = shift;
     $self->load( _id => $id );
+}
+
+sub supported_features {
+    my $self = shift;
+
+    return {
+        session => 1,
+    };
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
